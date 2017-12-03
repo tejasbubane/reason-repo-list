@@ -1,12 +1,23 @@
 [%%bs.raw {| require("./index.css") |}];
 
-let renderForRoute = (element) => ReactDOMRe.renderToElementWithId(element, "root");
+type route =
+  | Home
+  | Repo(string);
 
 let router = DirectorRe.makeRouter({"/": "root", "/repos/:language": "repos"});
 
+let renderForRoute = (route) => {
+  let component =
+    switch route {
+    | Home => <App router />
+    | Repo(language) => <RepoList language router />
+    };
+  ReactDOMRe.renderToElementWithId(component, "root")
+};
+
 let handlers = {
-  "root": () => renderForRoute(<App router />),
-  "repos": (language: string) => renderForRoute(<RepoList language router />)
+  "root": () => renderForRoute(Home),
+  "repos": (language: string) => renderForRoute(Repo(language))
 };
 
 DirectorRe.configure(router, {"html5history": true, "resource": handlers});
