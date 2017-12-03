@@ -7,7 +7,7 @@ type action =
 
 let component = ReasonReact.reducerComponent("RepoList");
 
-let make = (~language, _children) => {
+let make = (~router, ~language, _children) => {
   ...component,
   initialState: () => {repoData: None},
   didMount: (self) => {
@@ -37,8 +37,12 @@ let make = (~language, _children) => {
         )
       | None => se("Loading...")
       };
+    let gotoHome = (event) => {
+      ReactEventRe.Mouse.preventDefault(event);
+      DirectorRe.setRoute(router, "/")
+    };
     <div className="App">
-      <div className="nav-back"> <a href="#/"> (se("<< Back to Home")) </a> </div>
+      <div className="nav-back"> <a href="#" onClick=gotoHome> (se("<< Back to Home")) </a> </div>
       <h1> (se("Reason Projects")) </h1>
       <ul> repoItems </ul>
     </div>
