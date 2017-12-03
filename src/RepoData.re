@@ -17,7 +17,9 @@ let parseResponseJson = (json) =>
   json |> Json.Decode.field("items", Json.Decode.array(parseRepoJson));
 
 let repoUrl = (language) =>
-  "https://api.github.com/search/repositories?q=topic:" ++ language ++ "&type=Repositories";
+  "https://api.github.com/search/repositories?q=topic:"
+  ++ language
+  ++ "&type=Repositories&sort=stars";
 
 let fetchRepos = (language) =>
   Js.Promise.(
