@@ -1,4 +1,5 @@
 type repo = {
+  id: int,
   full_name: string,
   stargazers_count: int,
   watchers_count: int,
@@ -7,6 +8,7 @@ type repo = {
 
 let parseRepoJson = (json: Js.Json.t) : repo =>
   Json.Decode.{
+    id: json |> field("id", int),
     full_name: json |> field("full_name", string),
     stargazers_count: json |> field("stargazers_count", int),
     watchers_count: json |> field("watchers_count", int),

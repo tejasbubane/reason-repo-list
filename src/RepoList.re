@@ -33,7 +33,7 @@ let make = (~language, _children) => {
       switch self.state.repoData {
       | Some(repos) =>
         ReasonReact.arrayToElement(
-          Array.map((repo: RepoData.repo) => <RepoItem key=repo.full_name repo />, repos)
+          Array.map((repo: RepoData.repo) => <RepoItem key=(string_of_int(repo.id)) repo />, repos)
         )
       | None => se("Loading...")
       };
