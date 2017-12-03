@@ -10,6 +10,7 @@ let make = (~router, _children) => {
       DirectorRe.setRoute(router, path)
     };
     <div>
+      <GithubCorner />
       <h1> (se("Top Github Repos for languages")) </h1>
       <p> <i> (se("This is a fun project build with ReasonML")) </i> </p>
       <ul className="repo-links">

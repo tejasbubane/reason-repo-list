@@ -37,6 +37,10 @@ let make = (~language, _children) => {
         )
       | None => se("Loading...")
       };
-    <div className="App"> <h1> (se("Reason Projects")) </h1> <ul> repoItems </ul> </div>
+    <div className="App">
+      <GithubCorner />
+      <h1> (se("Reason Projects")) </h1>
+      <ul> repoItems </ul>
+    </div>
   }
 };
