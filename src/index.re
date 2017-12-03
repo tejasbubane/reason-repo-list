@@ -2,12 +2,11 @@
 
 let renderForRoute = (element) => ReactDOMRe.renderToElementWithId(element, "root");
 
-let router = DirectorRe.makeRouter({"/": "root", "/reasonml": "reasonml", "/ruby": "ruby"});
+let router = DirectorRe.makeRouter({"/": "root", "/repos/:language": "repos"});
 
 let handlers = {
   "root": () => renderForRoute(<App router />),
-  "reasonml": () => renderForRoute(<RepoList language="reasonml" router />),
-  "ruby": () => renderForRoute(<RepoList language="ruby" router />)
+  "repos": (language: string) => renderForRoute(<RepoList language router />)
 };
 
 DirectorRe.configure(router, {"html5history": true, "resource": handlers});

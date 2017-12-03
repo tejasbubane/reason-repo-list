@@ -10,8 +10,8 @@ let make = (~router, _children) => {
       DirectorRe.setRoute(router, path)
     };
     <ul className="List of Repos">
-      <li> <a href="#" onClick=(goto("/reasonml"))> (se("ReasonML")) </a> </li>
-      <li> <a href="#" onClick=(goto("ruby"))> (se("Ruby")) </a> </li>
+      <li> <a href="#" onClick=(goto("repos/reasonml"))> (se("ReasonML")) </a> </li>
+      <li> <a href="#" onClick=(goto("repos/ruby"))> (se("Ruby")) </a> </li>
     </ul>
   }
 };
