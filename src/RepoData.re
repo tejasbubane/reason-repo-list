@@ -16,11 +16,12 @@ let parseRepoJson = (json: Js.Json.t) : repo =>
 let parseResponseJson = (json) =>
   json |> Json.Decode.field("items", Json.Decode.array(parseRepoJson));
 
-let repoUrl = "https://api.github.com/search/repositories?q=topic%3Areasonml&type=Repositories";
+let repoUrl = (language) =>
+  "https://api.github.com/search/repositories?q=topic:" ++ language ++ "&type=Repositories";
 
-let fetchRepos = () =>
+let fetchRepos = (language) =>
   Js.Promise.(
-    Bs_fetch.fetch(repoUrl)
+    Bs_fetch.fetch(repoUrl(language))
     |> then_(Bs_fetch.Response.text)
     |> then_((jsonText) => resolve(parseResponseJson(Js.Json.parseExn(jsonText))))
   );

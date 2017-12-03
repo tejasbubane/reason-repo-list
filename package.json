@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "bs-director": "^0.0.5",
     "bs-fetch": "buckletypes/bs-fetch",
     "bs-json": "buckletypes/bs-json",
     "react": "^16.2.0",

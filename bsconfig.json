@@ -7,7 +7,8 @@
     "reason-react",
     "bs-jest",
     "bs-fetch",
-    "bs-json"
+    "bs-json",
+    "bs-director"
   ],
   "reason": {
     "react-jsx": 2
