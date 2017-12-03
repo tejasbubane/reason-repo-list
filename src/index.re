@@ -10,7 +10,7 @@ let renderForRoute = (route) => {
   let component =
     switch route {
     | Home => <App router />
-    | Repo(language) => <RepoList language router />
+    | Repo(language) => <RepoList language />
     };
   ReactDOMRe.renderToElementWithId(component, "root")
 };
